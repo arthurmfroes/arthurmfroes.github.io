@@ -15,49 +15,40 @@
 
     <h1 class="text-4xl font-bold mb-6 text-center">Git Cheat Sheet</h1>
 
-    <!-- Search Bar -->
     <div class="flex justify-center mb-8">
         <input type="text" id="searchInput" onkeyup="searchCards()" placeholder="Pesquise por comandos, descrições ou tags..." 
                class="border rounded-lg p-2 w-2/3 shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500">
     </div>
 
-    <!-- Container for Git Command Cards -->
     <div id="cardsContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
 
     <script>
-        // Function to create and append a new Git command card
         function createCard(cardId, commandName, commandDescription, exampleUsage, tags) {
-            // Create a div for the card
+            
             const cardDiv = document.createElement('div');
             cardDiv.className = 'bg-white p-6 rounded-lg shadow-md';
             cardDiv.id = cardId;
             cardDiv.setAttribute('data-tags', tags.join(' ').toLowerCase());
 
-            // Add title (command name)
             const title = document.createElement('h2');
             title.className = 'text-2xl font-bold mb-2';
             title.innerText = commandName;
 
-            // Add description
             const description = document.createElement('p');
             description.className = 'text-gray-700 mb-4';
             description.innerText = commandDescription;
 
-            // Add example usage
             const example = document.createElement('pre');
             example.className = 'bg-gray-100 p-4 rounded-lg text-sm font-mono';
             example.innerText = exampleUsage;
 
-            // Append all elements to the card
             cardDiv.appendChild(title);
             cardDiv.appendChild(description);
             cardDiv.appendChild(example);
 
-            // Append the card to the container
             document.getElementById('cardsContainer').appendChild(cardDiv);
         }
 
-        // Function to filter cards based on search input
         function searchCards() {
             const input = document.getElementById('searchInput').value.toLowerCase();
             const cards = document.querySelectorAll('#cardsContainer > div');
@@ -73,8 +64,6 @@
                 }
             });
         }
-
-        // Populating the Git Cheat Sheet with detailed commands
 
         createCard(
             'card1', 
@@ -194,6 +183,22 @@
             'Reaplica os commits da sua branch em cima de outra base. Usado para reorganizar o histórico de commits.', 
             'git rebase main', 
             ['rebase', 'reorganizar', 'histórico', 'mesclar', 'rebasing', 'commits', 'sincronizar', 'atualizar']
+        );
+
+        createCard(
+            'card16', 
+            'git diff', 
+            'Mostra as diferenças entre commits, arquivos ou branches. Usado para comparar alterações entre o estado atual e o anterior. Pode ser utilizado para visualizar mudanças não commitadas, comparações entre branches ou até entre commits específicos.', 
+            'git diff commit1 commit2', 
+            ['comparar', 'diferenças', 'alterações', 'diff', 'mudanças', 'branch', 'commits', 'arquivos', 'comparação']
+        );
+
+        createCard(
+            'card17', 
+            'git rm', 
+            'Remove arquivos do repositório e da área de stage. Usado quando você precisa excluir um arquivo que não será mais rastreado pelo Git.', 
+            'git rm arquivo.txt', 
+            ['remover', 'excluir', 'delete', 'rm', 'arquivo', 'repositório', 'git', 'deletar']
         );
     </script>
 
